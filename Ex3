@@ -1,0 +1,83 @@
+/*
+ * 3.	Viết các hàm có các chức năng như xem tổng số dư tài khoản, gửi tiền và rút tiền. Hàm kiểm tra sự lựa chọn của người dùng.
+a.	1: Xem số dư
+b.	2: Gửi tiền
+c.	3: Rút tiền
+Người dùng chọn số 1, hiển thị số dư có trong tài khoản.
+ Số 2, yêu cầu người dùng nhập số tiền gửi; Sau đó hiển thị tổng số dư trong tài khoản amount + deposit. 
+ Số 3 yêu cầu người dùng nhập số tiền muốn rút; sau đó hiển thị tổng số trong tài khoản amount – withdraw.
+  Trường hợp người dùng chọn khác số trong 1 đến 3, chương trình thông báo “KHÔNG HỢP LỆ”
+ */
+package FUNCTIONS_2;
+
+import java.util.Scanner;
+
+public class Ex3 {
+	static Scanner sc = new Scanner(System.in);
+	static double amount = 0;
+	static final int SHOW_AMOUNT = 1;
+	static final int DEPOSIT = 2;
+	static final int WITH_DRAW = 3;
+	
+	public static void main(String[] args) {
+		while(true) {
+			int chooseOfUser = choose();
+			process(chooseOfUser);
+		}
+			}
+	static void menu() {
+		System.out.println("---------------");
+		System.out.println("#1 Xem so du.");
+		System.out.println("#2 Gui tien");
+		System.out.println("#3 Rut tien");
+		System.out.println("#4 Thoat");
+		System.out.println("---------------");
+	}
+	static double getInput() {
+		while(true) {
+			double money = sc.nextDouble();
+			if(money > 0) {
+				return money;
+			}
+		}
+	}
+	static void showAmount() {
+		System.out.println("So du trong tai khoan la: " + amount);
+	}
+	static void withDraw() {
+		System.out.println("Nhap so tien can rut: ");
+		amount -= getInput();
+		showAmount();
+	}
+	static void deposit() {
+		System.out.println("Nhap vao so tien can gui: ");
+		amount += getInput();
+		showAmount();
+	}
+	static boolean isValid(int choose) {
+		return choose>=1 && choose<=4;
+	}
+	static int choose() {
+		while(true) {
+			menu();
+			int choose = sc.nextInt();
+			if(isValid(choose))return choose;
+		}
+	}
+	static void process(int choose) {
+		switch(choose) {
+		case SHOW_AMOUNT:
+			showAmount();
+		break;
+		case DEPOSIT:
+			deposit();
+		break;
+		case WITH_DRAW:
+			withDraw();
+			break;
+			default:
+				System.exit(0);
+				break;
+		}
+	}
+}
