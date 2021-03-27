@@ -1,0 +1,61 @@
+/*
+ * 2.	Được biết trong tiếng anh có 5 nguyên âm gồm a e i o u, 
+ * những từ còn lại gọi là phụ âm. Trong một câu văn có thể bao gồm nguyên âm, 
+ * phụ âm, số và khoảng trắng. Viết hàm thực hiện đếm các ký tự trong một câu văn sau 
+ * “This website is aw3som3”. Câu văn trên có bao nhiêu nguyên âm, phụ âm, 
+ * chữ số và khoảng trắng.
+ */
+package FUNCTIONS_2;
+
+import java.util.Scanner;
+
+public class Ex2 {
+
+	public static void main(String[] args) {
+		while(true) {
+			String s = input();
+			count(s);
+			System.out.println("The number of vovel is: " + countVowel);
+			System.out.println("The number of Consonant is: " + countConsonant);
+			System.out.println("The number of Digital is: " + countDigit);
+			System.out.println("The number of Space is: " + countSpace);
+		}
+	}
+	
+	static String input() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter a chain: ");
+		return sc.nextLine();
+	}
+	static boolean isVovel(char c) {
+		return c == 'a'|| c =='e'|| c=='u'|| c =='o' || c =='i';
+	}
+	static boolean isSpace(char c) {
+		return c == ' '; 
+	}
+	static boolean isDigit(char c) {
+		return Character.isDigit(c);
+	}
+	static boolean isConsonant(char c) {
+		if(isVovel(c)) return false;
+		if(isSpace(c)) return false;
+		if(isDigit(c)) return false;
+		return !isVovel(c);
+	}
+	
+	
+	static void count(String s) {
+		for(int i =0 ; i < s.length(); i++) {
+			if(isVovel(s.charAt(i))) countVowel++;
+			else if(isSpace(s.charAt(i))) countSpace++;
+			else if(isDigit(s.charAt(i))) countDigit++;
+			else countConsonant++;
+		}
+	}
+	static int countVowel =0;
+	static int countSpace =0;
+	static int countDigit =0;
+	static int countConsonant =0;
+	
+	
+}
