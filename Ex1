@@ -1,0 +1,34 @@
+/*
+ * 1.	Các số dương 1, 2, 3 ... được gọi là số tự nhiên và tổng của nó là 
+ * kết quả của tất cả các số bắt đầu từ 1 đến số đã cho (n).
+ *  Viết hàm tính tổng các số tự nhiên. Hàm đọc dữ liệu người dùng nhập vào.
+ *   Ví dụ: người dùng nhập 100 => 1 + 2 + 3 + … + 100; Hiển thị “Tống: 5050”
+ */
+
+package FUNCTIONS_2;
+
+import java.util.Scanner;
+
+public class Ex1 {
+
+	public static void main(String[] args) {
+		while(true) {
+			int n = input();
+			int sum = sum(n);
+			System.out.println("The sum of number from 1 to " + n +" is: " + sum);
+		}
+		
+	}
+	static int input() {
+		Scanner sc =new Scanner(System.in);
+		System.out.println("Enter a number: ");
+		return sc .nextInt();
+	}
+	static int sum(int n) {
+		int sum = 0;
+		for(int i = 1; i <= n; i++) {
+			sum += i;
+		}
+		return sum;
+	}
+}
