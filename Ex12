@@ -1,0 +1,31 @@
+/* 12.Viết chương trình cho phép người dùng nhập vào một chuỗi s bất kì. 
+ * Chương trình thực hiện tìm và hiển thị vị trí của các ký tự viết hoa trong chuỗi. 
+ * Ví dụ: Đầu vào là “HelloWorld” thì đầu ra sẽ là “H-0, W-5”.
+ */
+
+package FUNCTIONS_2;
+
+import java.util.Scanner;
+
+public class Ex12 {
+	static Scanner sc = new Scanner(System.in);
+	public static void main(String[] args) {
+		String string = input();
+		getChar(string);
+	}
+	static String input() {
+		System.out.println("Enter a chain: ");
+		return sc.nextLine();
+	}
+	
+	static void getChar(String s) {
+		for(int i = 0; i < s.length(); i++) {
+			char c = s.charAt(i);
+			for(char j = 'A'; j <= 'Z'; j++) {
+				if(c == j) {
+					System.out.print(c + "-" + i + " ");
+				}
+			}
+		}
+	}
+}
