@@ -8,26 +8,26 @@ package FUNCTIONS_2;
 import java.util.Scanner;
 
 public class Ex9 {
-	static int factorial =1;
+
+	static Scanner sc = new Scanner(System.in);
+
 	public static void main(String[] args) {
-		int number = input();
-		int factorial = factorials(number);
-		print(number, factorial);
-		
-	
+		while (true) {
+			int number = input();
+			factorials(number);
+		}
 	}
+
 	static int input() {
-		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter a number: ");
 		return sc.nextInt();
 	}
-	static int factorials(int number) {
-		for(int i = 1; i <= number; i++) {
+
+	static void factorials(int number) {
+		int factorial = 1;
+		for (int i = 1; i <= number; i++) {
 			factorial *= i;
 		}
-		return factorial;
-	}
-	static void print(int number, int factorial) {
-		System.out.println("The factorials of " + number + " is: " + factorial);
+		System.out.println("the factorials of " + number + " is: " + factorial);
 	}
 }
